@@ -10,12 +10,12 @@ function App() {
     {
     prise:3321,
     name:"honda",
-    quantity:1,
+    quantity:0,
   },
   {
     prise:343,
     name:"lumbergini",
-    quantity:3,
+    quantity:0,
   },
  {
    prise:333,

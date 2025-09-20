@@ -3,13 +3,20 @@ import "./product.css";
 import { useState } from "react";
 function ProductPrint({productlist}){
     
-let [product,setincrement]=useState(productlist);
+let [product,setIncrement]=useState(productlist);
+let [decproduct,setDecrement]=useState(productlist);
 
     function incrementQuantity(index){
         //yani sara array ko otana spread
         let newprod=[...product] 
         newprod[index].quantity++
-        setincrement(newprod);
+        setIncrement(newprod);
+    }
+        function decrementQuantity(index){
+        //yani sara array ko otana spread
+        let newprod=[...product] 
+        newprod[index].quantity--
+        setIncrement(newprod);
     }
             //  --------------------------IMPORTANT----------------------------------- //
 // agar ham manually is ma number 2 da index ma or is ka quantity ko plu1 kara 
@@ -42,7 +49,7 @@ productlist.map((p,i)=>{
      <div className="btn-group">
      <button className="btn blu" onClick={()=>{incrementQuantity(i)}}>+</button>
      <button className="btn green">{p.quantity}</button>
-     <button className="btn red" >-</button>
+     <button className="btn red" onClick={()=>{decrementQuantity(i)}}>-</button>
 </div>
 <h1>{p.prise*p.quantity}</h1>
 </div>
