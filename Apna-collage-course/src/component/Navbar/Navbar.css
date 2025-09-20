@@ -1,0 +1,27 @@
+*{
+
+    margin: 0%;
+    padding: 0%;
+}
+nav{
+    background-color: black;
+    padding: 21px;
+width: 100vw;
+margin-bottom: 30px;
+}
+ul{
+
+    display: flex;
+   justify-content: space-around;
+   gap: 4px;
+
+
+
+}
+li{
+
+    color:antiquewhite;
+    font-style: fantasy;
+cursor: pointer;
+}
+
