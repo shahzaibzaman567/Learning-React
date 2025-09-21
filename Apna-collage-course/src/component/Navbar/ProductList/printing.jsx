@@ -5,33 +5,41 @@ import Footer from "../../Footer/Footer.jsx";
 
 
 function ProductPrint({ productlist }) {
-    
+    let [Reset, setReset] = useState(productlist);
     let [totalAmount, setTotalAmount] = useState(0);
+    console.log(productlist)
+    console.log(totalAmount)
+    
     let [increment, setIncrement] = useState(productlist);
     let [decrement, setDecrement] = useState(productlist);
-    let [Reset, setReset] = useState(productlist);
-     
+    
+    //increment 
     function incrementQuantity(index) {
         //yani sara array ko otana spread
         let newprod = [...increment];
-        let newTotalAmount = totalAmount;
+        let newTotalAmount =totalAmount;
        //add new prise
         newprod[index].quantity++
+
         newTotalAmount += increment[index].prise;
        //set the the new total
-        setTotalAmount(newTotalAmount);
-        setIncrement(newprod);
+       console.log(productlist)
+       setIncrement(newprod);
+       setTotalAmount(newTotalAmount);
     }
+
+    //decrement quantity
     function decrementQuantity(index) {
         //yani sara array ko otana spread
         let newprod = [...decrement]
+        let newTotalAmount = totalAmount;
         if (newprod[index].quantity > 0) {
 
-            let newTotalAmount = totalAmount;
             //subtract prises
             newprod[index].quantity--
-            newTotalAmount -= decrement[index].prise;
 
+        newTotalAmount -= increment[index].prise;
+        
              //set subtract prise
             setTotalAmount(newTotalAmount);
         }
@@ -42,6 +50,8 @@ function ProductPrint({ productlist }) {
     function reset(){
       Reset=[...productlist]
 
+      totalAmount=0
+      setTotalAmount(totalAmount)
         Reset.map((p,i)=>{
             
         Reset[i].quantity=0    
