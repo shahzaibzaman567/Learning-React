@@ -3,9 +3,10 @@ import Nabar from './component/Navbar/Nabar';
 import ProductList from "./component/Navbar/ProductList/product.jsx"
 import './App.css';
 import { useState } from 'react';
+import Footer from "./component/Footer/Footer.jsx"
 
 function App() {
-  
+  //the data of printing and product files
   const Product=[
     {
     prise:3321,
@@ -33,9 +34,7 @@ return (
  
 <Nabar />
 <ProductList p={Product }  />
-{/* <footer/> */}
-  {/* {console.log(Nabar)} */}
-    <h1></h1>
+{/* <Footer/> */}
     </>
 
   )
