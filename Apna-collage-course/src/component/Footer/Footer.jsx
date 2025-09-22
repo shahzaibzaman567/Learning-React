@@ -23,7 +23,7 @@ function Footer({Total,reset}) {
                 <button className="btn btn-danger " onClick={reset  }>Reset</button>
                 <div>
 
-                    <h1 style={{ backgroundColor: "black", color: "white", margin: "2px 10px" }}>Total:{Total}</h1>
+                    <h1 style={{ backgroundColor: "black", color: "white", margin: "2px 10px",textAlign:"center" }}>Total:{Total}</h1>
 
                 </div>
 
