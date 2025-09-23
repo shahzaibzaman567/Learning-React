@@ -1,0 +1,15 @@
+.login-div{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+button{
+
+    padding: 30px;
+    border: 2px solif black;
+    color: aliceblue;
+    background-color: black;
+    font-style: italic;
+}

@@ -5,67 +5,70 @@ import Footer from "../../Footer/Footer.jsx";
 
 
 function ProductPrint({ productlist }) {
-    let [product, setproductlist] = useState(productlist);
     
-    let [totalAmount, setTotalAmount] = useState(0);
-    let [Reset, setReset] = useState(productlist);
+    let [product, setproductlist] = useState(productlist);
 
-    let [increment, setIncrement] = useState(productlist);
-    let [decrement, setDecrement] = useState(productlist);
+    let [totalAmount, setTotalAmount] = useState(0);
 
     //increment 
     function incrementQuantity(index) {
         //yani sara array ko otana spread
-        let newprod = [...increment];
+        let newprod = [...product];
         let newTotalAmount = totalAmount;
         //add new prise
         newprod[index].quantity++
 
-        newTotalAmount += increment[index].prise;
+        newTotalAmount += product[index].prise;
         //set the the new total
-        setIncrement(newprod);
+        setproductlist(newprod);
         setTotalAmount(newTotalAmount);
     }
 
     //decrement quantity
     function decrementQuantity(index) {
         //yani sara array ko otana spread
-        let newprod = [...decrement]
-        let newTotalAmount = totalAmount;
-        if (newprod[index].quantity > 0) {
+        let Newprod = [...product]
+        let NewTotalAmount = totalAmount;
+        if (Newprod[index].quantity > 0) {
 
             //subtract prises
-            newprod[index].quantity--
+            Newprod[index].quantity--
 
-            newTotalAmount -= increment[index].prise;
+            NewTotalAmount -= product[index].prise;
 
             //set subtract prise
-            setTotalAmount(newTotalAmount);
+            setproductlist(NewTotalAmount);
         }
 
-        setDecrement(newprod);
+        setproductlist(Newprod);
     }
 
     function reset() {
-        newReset= [...productlist]
+       let NewReset = [...product]
+        NewReset.forEach(p => p.quantity = 0)
 
-        newReset.forEach(p => p.quantity=0)
-           
-                setTotalAmount(0)
-        setReset(newReset);
+        setTotalAmount(0)
+        setproductlist(NewReset);
     }
 
     function remove(index) {
-        
-        let newproduct=[...productlist]
-        newtotal=totalAmount;
-console.log(newtotal)
-        total -=productlist[index].quantity*productlist[index].prise;
-        console.log(newproduct);
 
-        newproduct.splice(index,1)
+        let newproduct = [...product]
+        console.log(product)
+        
+      let  total=totalAmount;
+if(total===0){
+    total=0
+}else{
+
+    total -= productlist[index].quantity * productlist[index].prise;
+    console.log(newproduct)
+}
+
+        newproduct.splice(index, 1);
+        console.log(newproduct);
         setproductlist(newproduct);
-setTotalAmount(total);
+        setTotalAmount(total);
     }
 
     //  --------------------------IMPORTANT----------------------------------- //
@@ -82,8 +85,8 @@ setTotalAmount(total);
 
             <div className="head-container">
 
-
-                {productlist.map((p, i) => {
+                {product.map((p, i) => {
+{console.log(product)}
 
                     //    let index = i
                     return (
