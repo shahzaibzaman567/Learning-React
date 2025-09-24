@@ -4,6 +4,7 @@ import ProductList from "./component/Navbar/ProductList/product.jsx"
 import './App.css';
 import { useState } from 'react';
 import Footer from "./component/Footer/Footer.jsx"
+import Additem from './component/form/additems.jsx';
 
 function App() {
   //the data of printing and product files
@@ -33,6 +34,7 @@ return (
   <>
  
 <Nabar />
+<Additem/>
 <ProductList p={Product }  />
 {/* <Footer/> */}
     </>

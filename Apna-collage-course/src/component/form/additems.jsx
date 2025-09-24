@@ -9,23 +9,21 @@ function Additem({p}){
     
     return(
         <>
-
-  <form>
-  <div className="mb-3">
-    <label htmlFor="exampleInputEmail1" className="form-label">
-      Email address
-    </label>
+<div className=" d-flex align-items-center justify-content-center p-5">
+  <form className="card border-primary col-3 pt-5">
+  <div className=" mb-3  w-100">
+    <label htmlFor="Name" className="form-label">
+      Name:
+          </label>
     <input
-      type="email"
+      type="text"
       className="form-control"
-      id="exampleInputEmail1"
+      id="Name"
       aria-describedby="emailHelp"
     />
-    <div id="emailHelp" className="form-text">
-      We'll never share your email with anyone else.
-    </div>
+    
   </div>
-  <div className="mb-3">
+  <div className="mb-6 w-100">
     <label htmlFor="exampleInputPassword1" className="form-label">
       Password
     </label>
@@ -35,18 +33,12 @@ function Additem({p}){
       id="exampleInputPassword1"
     />
   </div>
-  <div className="mb-3 form-check">
-    <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-    <label className="form-check-label" htmlFor="exampleCheck1">
-      Check me out
-    </label>
-  </div>
-  <button type="submit" className="btn btn-primary">
+  <button type="submit" className="btn btn-primary w-100 mt-3">
     Submit
   </button>
 </form>
 
-    
+    </div>
         </>
     )
 
