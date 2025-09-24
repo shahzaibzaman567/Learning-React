@@ -20,7 +20,7 @@ function Footer({Total,reset}) {
 
             <div className="row">
 
-                <button className="btn btn-danger " onClick={reset}>Reset</button>
+                <button className="btn btn-danger " onClick={reset  }>Reset</button>
                 <div>
 
                     <h1 style={{ backgroundColor: "black", color: "white", margin: "2px 10px",textAlign:"center" }}>Total:{Total}</h1>

@@ -5,9 +5,8 @@ import Footer from "../../Footer/Footer.jsx";
 
 
 function ProductPrint({ productlist }) {
-    
     let [product, setproductlist] = useState(productlist);
-
+    
     let [totalAmount, setTotalAmount] = useState(0);
 
     //increment 
@@ -27,48 +26,41 @@ function ProductPrint({ productlist }) {
     //decrement quantity
     function decrementQuantity(index) {
         //yani sara array ko otana spread
-        let Newprod = [...product]
-        let NewTotalAmount = totalAmount;
-        if (Newprod[index].quantity > 0) {
+        let newprod = [...product]
+        let newTotalAmount = totalAmount;
+        if (newprod[index].quantity > 0) {
 
             //subtract prises
-            Newprod[index].quantity--
+            newprod[index].quantity--
 
-            NewTotalAmount -= product[index].prise;
+            newTotalAmount -= product[index].prise;
 
             //set subtract prise
-            setproductlist(NewTotalAmount);
+            setTotalAmount(newTotalAmount);
         }
 
-        setproductlist(Newprod);
+        setproductlist(newprod);
     }
 
     function reset() {
-       let NewReset = [...product]
-        NewReset.forEach(p => p.quantity = 0)
+     let   newReset= [...product]
 
-        setTotalAmount(0)
-        setproductlist(NewReset);
+        newReset.forEach(p => p.quantity=0)
+           
+                setTotalAmount(0)
+        setproductlist(newReset);
     }
 
     function remove(index) {
-
-        let newproduct = [...product]
-        console.log(product)
         
-      let  total=totalAmount;
-if(total===0){
-    total=0
-}else{
+        let newproduct=[...product];
+        let newTotal=totalAmount;
+      
+      newTotal -=product[index].quantity*product[index].prise;
 
-    total -= productlist[index].quantity * productlist[index].prise;
-    console.log(newproduct)
-}
-
-        newproduct.splice(index, 1);
-        console.log(newproduct);
+        newproduct.splice(index,1)
         setproductlist(newproduct);
-        setTotalAmount(total);
+setTotalAmount(newTotal);
     }
 
     //  --------------------------IMPORTANT----------------------------------- //
@@ -85,8 +77,10 @@ if(total===0){
 
             <div className="head-container">
 
-                {product.map((p, i) => {
-{console.log(product)}
+
+                {
+                product.length > 0 ?
+                product.map((p, i) => {
 
                     //    let index = i
                     return (
@@ -114,7 +108,9 @@ if(total===0){
 
 
                     )
-                })}
+                })
+            :<h1>Product has exits </h1>
+            }
 
 
             </div>
