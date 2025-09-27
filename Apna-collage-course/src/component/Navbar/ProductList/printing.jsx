@@ -19,7 +19,7 @@ function ProductPrint({ pro, setProduct }) {
 
         newTotalAmount += pro[index].prise;
         //set the the new total
-        set(newprod);
+        setProduct(newprod);
         setTotalAmount(newTotalAmount);
     }
 
@@ -43,7 +43,7 @@ function ProductPrint({ pro, setProduct }) {
     }
 
     function reset() {
-        let newReset = [...p]
+        let newReset = [...pro]
 
         newReset.forEach(p => p.quantity = 0)
 
@@ -53,7 +53,7 @@ function ProductPrint({ pro, setProduct }) {
 
     function remove(index) {
 
-        let newproduct = [...p];
+        let newproduct = [...pro];
         let newTotal = totalAmount;
 
         newTotal -= pro[index].quantity * pro[index].prise;
