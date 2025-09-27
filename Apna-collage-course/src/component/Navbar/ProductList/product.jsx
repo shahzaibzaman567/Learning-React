@@ -5,15 +5,15 @@ import ProductPrint from "./printing.jsx";
 //product function 
 //using props 
 
-function ProductList({p}){
+function ProductList({ p }) {
 
     // console.log(incrnt())
-    
-    return(
+
+    return (
         <>
 
-    <ProductPrint productlist={p} />
-    
+            <ProductPrint productlist={p} />
+
         </>
     )
 

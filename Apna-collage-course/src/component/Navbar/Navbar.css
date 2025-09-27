@@ -1,27 +1,29 @@
-*{
+* {
 
     margin: 0%;
     padding: 0%;
 }
-nav{
+
+nav {
     background-color: black;
     padding: 21px;
-width: 99vw;
-margin-bottom: 30px;
+    width: 99vw;
+    margin-bottom: 30px;
 }
-ul{
+
+ul {
 
     display: flex;
-   justify-content: space-around;
-   gap: 4px;
+    justify-content: space-around;
+    gap: 4px;
 
 
 
 }
-li{
 
-    color:antiquewhite;
+li {
+
+    color: antiquewhite;
     font-style: fantasy;
-cursor: pointer;
+    cursor: pointer;
 }
-

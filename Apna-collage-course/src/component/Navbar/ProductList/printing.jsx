@@ -2,68 +2,68 @@ import React from "react";
 import "./product.css";
 import { useState } from "react";
 import Footer from "../../Footer/Footer.jsx";
-import Additem from "../../form/additems.jsx";
+// import Additem from "../../form/additems.jsx";
 
-function ProductPrint({ productlist }) {
-    let [product, setproductlist] = useState(productlist);
+
+function ProductPrint({ pro, setProduct }) {
 
     let [totalAmount, setTotalAmount] = useState(0);
 
     //increment 
     function incrementQuantity(index) {
         //yani sara array ko otana spread
-        let newprod = [...product];
+        let newprod = [...pro];
         let newTotalAmount = totalAmount;
         //add new prise
         newprod[index].quantity++
 
-        newTotalAmount += product[index].prise;
+        newTotalAmount += pro[index].prise;
         //set the the new total
-        setproductlist(newprod);
+        set(newprod);
         setTotalAmount(newTotalAmount);
     }
 
     //decrement quantity
     function decrementQuantity(index) {
         //yani sara array ko otana spread
-        let newprod = [...product]
+        let newprod = [...pro]
         let newTotalAmount = totalAmount;
         if (newprod[index].quantity > 0) {
 
             //subtract prises
             newprod[index].quantity--
 
-            newTotalAmount -= product[index].prise;
+            newTotalAmount -= pro[index].prise;
 
             //set subtract prise
             setTotalAmount(newTotalAmount);
         }
 
-        setproductlist(newprod);
+        setProduct(newprod);
     }
 
     function reset() {
-        let newReset = [...product]
+        let newReset = [...p]
 
         newReset.forEach(p => p.quantity = 0)
 
         setTotalAmount(0)
-        setproductlist(newReset);
+        setProduct(newReset);
     }
 
     function remove(index) {
 
-        let newproduct = [...product];
+        let newproduct = [...p];
         let newTotal = totalAmount;
 
-        newTotal -= product[index].quantity * product[index].prise;
+        newTotal -= pro[index].quantity * pro[index].prise;
 
         newproduct.splice(index, 1)
-        setproductlist(newproduct);
+        setProduct(newproduct);
         setTotalAmount(newTotal);
     }
 
-   
+
 
     //  --------------------------IMPORTANT----------------------------------- //
     // agar ham manually is ma number 2 da index ma or is ka quantity ko plu1 kara 
@@ -81,8 +81,8 @@ function ProductPrint({ productlist }) {
 
 
                 {
-                    product.length > 0 ?
-                        product.map((p, i) => {
+                    pro.length > 0 ?
+                        pro.map((p, i) => {
 
                             //    let index = i
                             return (
@@ -114,10 +114,12 @@ function ProductPrint({ productlist }) {
                         : <h1>Product has exits </h1>
                 }
 
-
+                {
+                }
             </div>
-            <Footer Total={totalAmount} pro={productlist} reset={reset}  />
-                <Additem  products={productlist}/>
+            {/* <Additem pro={productlist} /> */}
+            <Footer Total={totalAmount} pro={pro} reset={reset} />
+
 
         </>
     )

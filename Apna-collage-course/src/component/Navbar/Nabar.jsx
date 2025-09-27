@@ -2,31 +2,31 @@ import React from "react";
 import "./navbar.css"
 
 
-function Nabar(){
+function Nabar() {
 
 
-        return(
+    return (
         <>
 
             <nav >
                 <ul>
                     <li>My React</li>
                     <a>
-                    <li>
-                        Home
-                    </li>
+                        <li>
+                            Home
+                        </li>
                     </a>
                     <a>
 
-                    <li>
-                        About
-                    </li>
+                        <li>
+                            About
+                        </li>
                     </a>
 
                     <a>
-                    <li>
-                        Contact
-                    </li>
+                        <li>
+                            Contact
+                        </li>
                     </a>
 
                 </ul>
@@ -34,10 +34,10 @@ function Nabar(){
 
 
 
-</>
-        )
+        </>
+    )
 
-    }
+}
 
 
 export default Nabar;

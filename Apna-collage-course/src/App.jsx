@@ -1,47 +1,47 @@
 import React from 'react';
 import Nabar from './component/Navbar/Nabar';
-import ProductList from "./component/Navbar/ProductList/product.jsx"
 import './App.css';
 import { useState } from 'react';
 import Footer from "./component/Footer/Footer.jsx"
 import Additem from './component/form/additems.jsx';
+import ProductPrint from './component/Navbar/ProductList/printing.jsx';
 
 function App() {
   //the data of printing and product files
-  const Product=[
+  const [Product, setProduct] = useState([
     {
-    prise:3321,
-    name:"honda",
-    quantity:0,
-  },
-  {
-    prise:343,
-    name:"lumbergini",
-    quantity:0,
-  },
- {
-   prise:333,
-   name:"vinax",
-   quantity:0,
-  },
-]
+      prise: 3321,
+      name: "honda",
+      quantity: 0,
+    },
+    {
+      prise: 343,
+      name: "lumbergini",
+      quantity: 0,
+    },
+    {
+      prise: 333,
+      name: "vinax",
+      quantity: 0,
+    },
+  ]
+  )
 
 
 
 
+  return (
+    <>
 
-return (
-  <>
- 
-<Nabar />
-<Additem/>
-<ProductList p={Product }  />
-{/* <Footer/> */}
+      <Nabar />
+      <Additem pro={Product} setProduct={setProduct} />
+
+      <ProductPrint pro={Product} setProduct={setProduct} />
+      {/* <Footer/>  */}
     </>
 
   )
 }
-
 export default App;
 
 

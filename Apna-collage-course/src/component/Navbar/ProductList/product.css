@@ -1,54 +1,62 @@
-.head-container{
+.head-container {
 
     display: flex;
     justify-content: center;
     align-items: center;
-flex-direction: column;
-gap: 10px;
+    flex-direction: column;
+    gap: 10px;
 }
-.prodUl{
+
+.prodUl {
     display: flex;
     justify-content: center;
     align-items: center;
-flex-direction: column;
+    flex-direction: column;
 }
-.card{
-    border:1px solid red;
-border-radius: 30px;
+
+.card {
+    border: 1px solid red;
+    border-radius: 30px;
     width: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    gap:3;
+    gap: 3;
 
 
 }
-.prodLi{
+
+.prodLi {
     font-size: 30px;
-    
+
     color: black;
 }
-.btn{
 
-padding: 15px;
-border: 1px solid black;
-width: 160;
+.btn {
+
+    padding: 15px;
+    border: 1px solid black;
+    width: 160;
 }
-.blu{
-color: rgb(255, 255, 255);
-background-color: blue;
+
+.blu {
+    color: rgb(255, 255, 255);
+    background-color: blue;
 }
-.red{
-color: rgb(255, 255, 255);
-background-color: red;
+
+.red {
+    color: rgb(255, 255, 255);
+    background-color: red;
 }
-.green{
-color: rgb(255, 255, 255);
-background-color: green;
+
+.green {
+    color: rgb(255, 255, 255);
+    background-color: green;
 }
-.btn-group{
+
+.btn-group {
 
     width: 148px;
     display: flex;
