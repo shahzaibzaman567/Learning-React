@@ -118,7 +118,7 @@ function ProductPrint({ pro, setProduct }) {
                 }
             </div>
             {/* <Additem pro={productlist} /> */}
-            <Footer Total={totalAmount} pro={pro} reset={reset} />
+            <Footer Total={totalAmount} pro={pro} set={setProduct} reset={reset}  />
 
 
         </>

@@ -13,7 +13,7 @@ function ProductList({ p }) {
         <>
 
             <ProductPrint productlist={p} />
-
+      
         </>
     )
 

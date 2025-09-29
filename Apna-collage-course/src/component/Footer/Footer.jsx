@@ -1,7 +1,38 @@
 import React, { useState } from "react";
 import "./Footer.css"
 
-function Footer({ Total, reset }) {
+function Footer({ Total, reset, pro, set }) {
+
+    const [user, setData] = useState("")
+
+
+    async function User() {
+
+
+        try {
+
+            let response = await fetch("https://jsonplaceholder.typicode.com/users");
+
+            let user = await response.json();
+
+            setData(user);
+
+            console.log(user);
+            
+            let pro = ""
+            set(pro)
+        } catch (err) {
+            let user = err;
+            let pro = " "
+
+            setData(user);
+            set(pro)
+
+
+            console.log(err)
+        }
+    }
+
 
     //REset function 
 
@@ -27,8 +58,7 @@ function Footer({ Total, reset }) {
 
                 </div>
 
-                <button className="btn btn-primary ">Pay now</button>
-
+                <button className="btn btn-primary " onClick={ User  }>Pay now</button>
             </div>
 
 
