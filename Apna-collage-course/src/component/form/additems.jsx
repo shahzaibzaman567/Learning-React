@@ -15,7 +15,7 @@ function Additem({ pro, setProduct }) {
 
     let newitem = [...pro]
 
-    newitem.push({
+    newitem?.push({
       prise: prise,
       name: name,
       quantity: 0,
@@ -44,15 +44,15 @@ function Additem({ pro, setProduct }) {
               id="Name"
               aria-describedby="emailHelp"
               name="name"
-              onChange={(e) => {
-                setState({ name: e.currentTarget.value })
-              }}
               value={state.name}
+              onChange={(e) => {
+                setState({ ...state,name: e.target.value })
+              }}
             />
 
           </div>
           <div className="mb-6 w-100">
-            <label htmlFor="exampleInputPassword1" className="form-label">
+            <label htmlFor="prise" className="form-label">
               prise
             </label>
             <input
@@ -60,10 +60,10 @@ function Additem({ pro, setProduct }) {
               className="form-control"
               id="prise"
               name="prise"
+              value={state.prise.toString()}
               onChange={(e) => {
-                setState({ prise: e.currentTarget.value })
+                setState({ ...state,prise: Number(e.target.value) })
               }}
-              value={state.prise}
 
 
             />
