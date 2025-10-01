@@ -6,7 +6,7 @@ import Footer from "./component/Footer/Footer.jsx"
 import Additem from './component/form/additems.jsx';
 import ProductPrint from './component/Navbar/ProductList/printing.jsx';
 
-function App() {
+function App({user}) {
   //the data of printing and product files
   const [Product, setProduct] = useState([
     {
@@ -25,14 +25,19 @@ function App() {
       quantity: 0,
     },
   ]
-  )
 
+)
+// if(user){
+
+//   setProduct(<h1>"Your oder has been placed!"</h1>)
+
+// }
 
 
 
   return (
     <>
-
+        
       <Nabar />
       <Additem pro={Product} setProduct={setProduct} />
 

@@ -1,49 +1,11 @@
 import React, { useState } from "react";
 import "./Footer.css"
+// import App from "../../App.jsx"; 
 
-function Footer({ Total, reset, pro, set }) {
+function Footer({ Total, reset, api }) {
 
-    const [user, setData] = useState("")
+   
 
-
-    async function User() {
-
-
-        try {
-
-            let response = await fetch("https://jsonplaceholder.typicode.com/users");
-
-            let user = await response.json();
-
-            setData(user);
-
-            console.log(user);
-            
-            let pro = ""
-            set(pro)
-        } catch (err) {
-            let user = err;
-            let pro = " "
-
-            setData(user);
-            set(pro)
-
-
-            console.log(err)
-        }
-    }
-
-
-    //REset function 
-
-
-    //   let  [Reset,setRest]=useState(0);
-
-    // function reset(){
-
-    //    newprodust=     
-
-    // }
 
     return (
 
@@ -58,10 +20,11 @@ function Footer({ Total, reset, pro, set }) {
 
                 </div>
 
-                <button className="btn btn-primary " onClick={ User  }>Pay now</button>
+                <button className="btn btn-primary " onClick={api} >Pay now</button>
             </div>
 
 
+            {/* <App user={user}/> */}
         </>
     )
 

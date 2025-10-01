@@ -2,7 +2,6 @@ import React from "react";
 import "./product.css";
 import { useState } from "react";
 import Footer from "../../Footer/Footer.jsx";
-// import Additem from "../../form/additems.jsx";
 
 
 function ProductPrint({ pro, setProduct }) {
@@ -71,17 +70,48 @@ function ProductPrint({ pro, setProduct }) {
     //pahli sa ho/
     // console.log(productlist[2].quantity)=0
 
+    // APIs using with pay now button
+async function User() {
+
+
+        try {
+
+            let response = await fetch("https://jsonplaceholder.typicode.com/users");
+
+            let user = await response.json();
+
+            pro=[]
+            setProduct(pro);
+
+        } catch (err) {
+
+            let user = err;
+         pro.push(
+         <h1>net work error </h1>
+        )
+        setProduct(pro);
+        }
+    }
+
+   
+
+    // if(user === 0){
+    //    return (
+
+         
+        // )
+    
 
 
 
     return (
         <>
-
             <div className="head-container">
 
 
                 {
-                    pro.length > 0 ?
+                    pro.length > 0 ? 
+                    
                         pro.map((p, i) => {
 
                             //    let index = i
@@ -112,18 +142,20 @@ function ProductPrint({ pro, setProduct }) {
                             )
                         })
                         : <h1>Product has exits </h1>
+                        
                 }
 
-                {
-                }
-            </div>
+                            </div>
+
+
             {/* <Additem pro={productlist} /> */}
-            <Footer Total={totalAmount} pro={pro} set={setProduct} reset={reset}  />
+            <Footer Total={totalAmount} reset={reset}  api={User} />
 
 
         </>
-    )
-}
+    )}
+
+// }
 
 
 
