@@ -2,11 +2,12 @@ import React from "react";
 import "./product.css";
 import { useState } from "react";
 import Footer from "../../Footer/Footer.jsx";
-
+import { useEffect } from "react";
 
 function ProductPrint({ pro, setProduct }) {
-
+    
     let [totalAmount, setTotalAmount] = useState(0);
+    let [data, setdata] = useState([])
 
     //increment 
     function incrementQuantity(index) {
@@ -71,51 +72,57 @@ function ProductPrint({ pro, setProduct }) {
     // console.log(productlist[2].quantity)=0
 
     // APIs using with pay now button
-async function User() {
+    // 
+function paynow(){
 
-
+    async function comments() {
         try {
 
-            let response = await fetch("https://jsonplaceholder.typicode.com/users");
 
-            let user = await response.json();
-
-            pro=[]
-            setProduct(pro);
+            let response = await fetch("https://jsonplaceholder.typicode.com/posts");
+            let data = await response.json();
+               pro=" your has been placed!3"      
+               setProduct(pro)
+            setdata(data)
 
         } catch (err) {
-
-            let user = err;
-         pro.push(
-         <h1>net work error </h1>
-        )
-        setProduct(pro);
+            console.log(err)
+            pro="Net work erroe"
+            setProduct(pro);
         }
     }
 
-   
+    useEffect(() => {
+
+        comments();
+
+    }, []);
+
+}
+
 
     // if(user === 0){
     //    return (
 
-         
-        // )
-    
+
+    // )
+
 
 
 
     return (
         <>
+{ typeof paynow == true ? 
             <div className="head-container">
+                <h1> Net Work error </h1>
+                  { 
+                     pro.length > 0 ?
 
-
-                {
-                    pro.length > 0 ? 
-                    
                         pro.map((p, i) => {
 
                             //    let index = i
                             return (
+                               
                                 <div className="card" key={i} >
 
                                     <ul className="prodUl">
@@ -141,19 +148,22 @@ async function User() {
 
                             )
                         })
-                        : <h1>Product has exits </h1>
-                        
-                }
+                        : <h1>your has been placed 1</h1>
+}
+                {/* :<h1>your order has been placed</h1> */}
 
-                            </div>
+            </div>:
+            <h1>your order has been placed </h1>
+            }
 
 
             {/* <Additem pro={productlist} /> */}
-            <Footer Total={totalAmount} reset={reset}  api={User} />
+            <Footer Total={totalAmount} reset={reset} api={paynow} />
 
 
         </>
-    )}
+    )
+}
 
 // }
 

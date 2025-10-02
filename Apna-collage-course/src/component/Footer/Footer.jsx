@@ -20,7 +20,7 @@ function Footer({ Total, reset, api }) {
 
                 </div>
 
-                <button className="btn btn-primary " onClick={api} >Pay now</button>
+                <button className="btn btn-primary " onClick={()=>{api}} >Pay now</button>
             </div>
 
 
