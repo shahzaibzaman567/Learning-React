@@ -112,9 +112,10 @@ function paynow(){
 
     return (
         <>
-{ typeof paynow == true ? 
+        {/* the chacking of api logic true ya karo false ya karo  */}
+{/* { typeof paynow == true ?  */}
             <div className="head-container">
-                <h1> Net Work error </h1>
+                {/* <h1> Net Work error </h1> */}
                   { 
                      pro.length > 0 ?
 
@@ -152,9 +153,11 @@ function paynow(){
 }
                 {/* :<h1>your order has been placed</h1> */}
 
-            </div>:
-            <h1>your order has been placed </h1>
-            }
+            </div>
+            {/* ya bi os logic ka hisa ha  */}
+            {/* : */}
+            {/* <h1>your order has been placed </h1> */}
+            {/* } */}
 
 
             {/* <Additem pro={productlist} /> */}
