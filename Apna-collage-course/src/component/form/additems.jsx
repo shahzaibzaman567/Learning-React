@@ -39,7 +39,8 @@ function Additem({ pro, setProduct }) {
               Name:
             </label>
             <input
-              type="text"
+            required
+            type="text"
               className="form-control"
               id="Name"
               aria-describedby="emailHelp"
@@ -56,6 +57,7 @@ function Additem({ pro, setProduct }) {
               prise
             </label>
             <input
+            required
               type="text"
               className="form-control"
               id="prise"

@@ -1,25 +1,24 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import React from "react";
 import { useState } from 'react';
-import Counter from "./component/Counter";
-import { CounterContext } from "./context/counter";
+// import Counter from "./component/Counter";
+// import { CounterContext } from "./context/counter";
+import Item from "./component/item";
 
 function complexApi() {
 
-const CoutnerState=useContext(CounterContext)
-console.log(CoutnerState)
-   return (
+// const CoutnerState=useContext(CounterContext)
+
+return (
       <>
-         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+         <div style={{ display: "flex",gap:5, alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
             <h1>Context API</h1>
             <br />
             <br />
-            <h1>Count is {CoutnerState.count} </h1>
-            <br />{console.log(CounterContext.count)}
-            <Counter />
-            {/* <Counter /> */}
-            {/* <Counter /> */}
-            {/* <Counter /> */}
+         <Item name="macbook" prise={10000} />
+         <Item name="pendrive" prise={30000}/>
+         <Item name="mobile" prise={3400}/>
+         <Item/>
          </div>
       </>
    )
@@ -27,3 +26,11 @@ console.log(CoutnerState)
 }
 
 export default complexApi;
+
+
+{/* <h1>Count is {CoutnerState.count} </h1> */}
+{/* <br />{console.log(CounterContext.count)} */}
+{/* <Counter /> */}
+{/* <Counter /> */}
+{/* <Counter /> */}
+{/* <Counter /> */}

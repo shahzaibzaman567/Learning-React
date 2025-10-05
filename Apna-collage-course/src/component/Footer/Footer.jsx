@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import "./Footer.css"
-// import App from "../../App.jsx"; 
 
-function Footer({ Total, reset, api }) {
+function Footer({ reset,Total,api }) {
 
-   
-
+    
 
     return (
 
@@ -20,7 +18,7 @@ function Footer({ Total, reset, api }) {
 
                 </div>
 
-                <button className="btn btn-primary " onClick={()=>{api}} >Pay now</button>
+                <button className="btn btn-primary " onClick={()=>api()} >Pay now</button>
             </div>
 
 
