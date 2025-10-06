@@ -1,11 +1,11 @@
 import React from "react";
-import { useState } from "react";
 import { cartContext } from "./cartContext";
-import { useContext } from "react";
+import { Cart } from "./cartContext";
 
 function Cartitem(p){
 
-const cart= useContext(cartContext);
+
+const cart= Cart();
 // console.log(p)
 console.log(cart)
     return(

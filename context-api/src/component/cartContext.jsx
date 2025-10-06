@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { createContext } from "react";
-import cartItem from "./cart";
+import { useContext } from "react";
 
+export const cartContext = createContext(null);
 
-export const cartContext=createContext(null);
+//another good practice
+export let Cart=()=>{
+    const cart= useContext(cartContext);
+    return cart
+ }
+
 
 function CardPrvider(p){
 const [items,setItem]=useState([])
