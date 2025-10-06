@@ -14,7 +14,7 @@ console.log(cart)
 
             <h3>Name:{p.name}</h3>
             <h4>prise:{p.prise}$</h4>
-            <button  onClick={()=>{cart.setItem(...cart.items,{Name:p.name ,prise:p.prise})}} >Add to cart</button>
+            <button  onClick={()=>cart.setItem([...cart.items,{Name:p.name ,prise:p.prise}])} >Add to cart</button>
 
         </div>
         </>

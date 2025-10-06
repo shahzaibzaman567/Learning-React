@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from 'react';
 // import Counter from "./component/Counter";
 // import { CounterContext } from "./context/counter";
+import CartItem from "./component/cart";
 import Item from "./component/item";
 
 function complexApi() {
@@ -18,8 +19,8 @@ return (
          <Item name="macbook" prise={10000} />
          <Item name="pendrive" prise={30000}/>
          <Item name="mobile" prise={3400}/>
-         <Item/>
          </div>
+         <CartItem/>
       </>
    )
 
