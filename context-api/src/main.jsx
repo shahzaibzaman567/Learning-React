@@ -4,13 +4,17 @@ import './index.css'
 import App from './App.jsx'
 import { CounterProvider } from './context/counter.jsx'
 import CardPrvider from './component/cartContext.jsx'
+import { CountProvider } from './context/incrementcontext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* <CounterProvider> */}
+    <CountProvider>
     <CardPrvider>
     <App />
     </CardPrvider>
+    </CountProvider>
+
     {/* </CounterProvider> */}
 
   </StrictMode>,

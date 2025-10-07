@@ -1,18 +1,16 @@
-// import { useContext } from "react";
 import React from "react";
-import { useState } from 'react';
-// import Counter from "./component/Counter";
-// import { CounterContext } from "./context/counter";
 import CartItem from "./component/cart";
 import Item from "./component/item";
+import CountIncrement from "./component/countincrement";
 
 function complexApi() {
-
+console.log("html")
 // const CoutnerState=useContext(CounterContext)
 
 return (
       <>
          <div style={{ display: "flex",gap:5, alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+         <CountIncrement/>
             <h1>Context API</h1>
             <br />
             <br />
