@@ -3,107 +3,130 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import { useEffect } from 'react'
 // import App from './App.jsx'
-import {BrowserRouter,Routes,Route,useParams,NavLink} from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useParams, NavLink } from 'react-router-dom'
 
-let  Home=()=>{
-  
-  const [posts,setPost]=useState([]);
-  useEffect(()=>{
-    
+let Home = () => {
+
+  const [posts, setPost] = useState([]);
+
+  useEffect(() => {
+
     fetch("https://jsonplaceholder.typicode.com/posts")
-    .then((d)=>d.json())
-    .then((d)=>setPost(d))
-    
-  },[])
-  
+      .then((d) => d.json())
+      .then((d) => setPost(d))
+
+  }, [])
+
   console.log(posts)
-  
-  return(
+
+  return (
     <>
+      <div className='title-div-head'>
     <h1>I am Home  Page</h1>
-    <div style={{padding:40}}>
-     {
-       
-       posts.map((p,i)=>(
-         
-         
-         <NavLink to={`/post/${p.userId}`} style={{display:'block',}} >{p.title}</NavLink>
-        ))
-      }
-    </div>
+         {
+
+          posts.map((p, i) => (
+
+<div className='title-div'>
+
+            <NavLink to={`/post/${p.userId}`} style={{ display: 'block', }} ><h2>{p.title}</h2></NavLink>
+
+            </div>
+          ))
+        }
+        </div>
     </>
   )
 }
 
-let  About=()=>{
-  return(
+let About = () => {
+  return (
     <>
-    <h1>I am About Page</h1>
+      <h1>I am About Page</h1>
     </>
   )
 }
-let  Profile=()=>{
-  return(
+let Profile = () => {
+  return (
     <>
-    <h1>I am Profile Page</h1>
+      <h1>I am Profile Page</h1>
     </>
   )
 }
 
-let  Data=()=>{
+let Data = () => {
   //using the hook of params to get name of dynamical
-  return(
+  return (
     <>
-    <h1>I am account Page </h1>
+      <h1>I am account Page </h1>
     </>
   )
 }
 
-let  PostPage=()=>{
-  const param=useParams()
-  console.log("params of nav link or post ",param.userId,param)
+let PostPage = () => {
+  const [data, setData] = useState(null);
+  const param = useParams()
+
+  //use the useuseEffect for api 
+  useEffect(() => {
+
+    fetch(`https://jsonplaceholder.typicode.com/posts/${param.userId}`)
+      .then((da) => da.json())
+      .then((da) => setData(da))
+
+  }, [])
+
+  console.log("one  post data", data)
+  console.log("params of nav link or post ", param.userId, param)
   //using the hook of params to get name of dynamical
-  return(
+  
+  if (data === null) { return <h1> Loading..... </h1> }
+  return (
     <>
-    <h1>I am postPage </h1>
+    <div className='post-title'>
+      
+      <h1>{data[0].userId +" ) "+ data[0].title} </h1>
+      <h3>{data[0].descriptio} </h3>
+
+      </div>
     </>
   )
 }
 
-let User=()=>{
-  const parms=useParams();
+let User = () => {
+  const parms = useParams();
   console.log(parms)
-  return(
+  return (
     <>
-  <h1>My name is {parms.userName}</h1>
+      <h1>My name is {parms.userName}</h1>
 
-  </>
+    </>
   )
 }
 
 
 createRoot(document.getElementById('root')).render(
-  
+
   <StrictMode>
- < BrowserRouter>
-<Routes>
-  <Route path='/' element={<Home/>}/>
-  <Route path='/about' element={<About/>}/>
-  <Route path={`/post/:userId`} element={<PostPage/>}/>
-  {/* //using nested route */}
-  <Route path='account'>
+    < BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path={`/post/:userId`} element={<PostPage />} />
+        {/* //using nested route */}
+        <Route path='account'>
 
-  <Route path='profile' element={<Profile/>}/>
+          <Route path='profile' element={<Profile />} />
 
- <Route path='data' element={<Data/>}/>
+          <Route path='data' element={<Data />} />
 
-  </Route>
+        </Route>
 
-<Route path='/user/:userName' element={<User/>}/>
+        <Route path='/user/:userName' element={<User />} />
 
-</Routes>
-    {/* <App /> */}
+      </Routes>
+      {/* <App /> */}
 
- </BrowserRouter>
+    </BrowserRouter>
   </StrictMode>,
 )
