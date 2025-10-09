@@ -85,7 +85,10 @@ let PostPage = () => {
     <>
     <div className='post-title'>
       
-      <h1>{data.userId +" ) "+ data.title} </h1>
+      <h1>{param.userId +" ) "+ data.title} </h1>
+      {
+      console.log(data.userId)  
+      }
       <div style={{display:'flex',alignItems:'center',justifyContent:'center' ,width:700 ,marginTop:60,}}>
       
       <h3>Description : {data.body} </h3>
