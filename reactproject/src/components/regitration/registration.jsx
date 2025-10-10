@@ -68,7 +68,7 @@ return        localStorage.setItem("userData", JSON.stringify(users));
                             }}
                         />
 
-                      <input type="submit" id="btn" />
+                     <Link to={"/login"}> <input type="submit" id="btn" /> </Link>
                     </form>                 
                 
                 </div>
