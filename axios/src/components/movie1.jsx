@@ -15,7 +15,7 @@ function Movie1(){
 
       //set the api in variable
 setData(res.data.description)
-console.log(res)
+console.log(res.data)
 }
 catch(err){
   console.log(err)
