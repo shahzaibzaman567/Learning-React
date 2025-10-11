@@ -1,43 +1,76 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios"
 
-export default function Post(){
+export default function PostExample() {
 
-  let [data,setData]=useState([])
+  const [response, setResponse] = useState(null);
 
-  //function of geting api
-  let Send= async ()=>{
-   
+  useEffect(() => {
+    const sendData = async () => {
 
-    try{
+      try {
+        const res = await axios.get("https://crudcrud.com/api/0060959d766145b58cbe78ad389ea27a/user", 
+          {
+          title: "React Axios",
+          body: "Ye aik example hai",
+          userId: 1
+        })
+        console.log(res);
 
-      const res= await axios.get("https://example.com/api",{
-        Name:"shah",
-        age:22
-      });
-
-      //set the api in variable
-setData(res.data)
-console.log(res)
-
-}
-catch(err){
-  console.log(err.res.message)
-}
-
-}
-console.log(data)
+      } catch (err) {
+        console.log(err.response?.data || err.message);
+      }
+    };
+    sendData();
+  }, []);
 
 
-useEffect(()=>{
+ 
+
+  // let Delet = async () => {
+
+  //   try {
+  //     const res = await axios.delete("https://crudcrud.com/api/0060959d766145b58cbe78ad389ea27a/user");
+  //     console.log(res)
+  //   }
+  //   catch (err) {
+  //     console.log(err)
+  //   }
+
+  // }
+
+//    let getMovieData = async () => {
+
+//     try {
+//       const res = await axios.get("https://crudcrud.com/api/0060959d766145b58cbe78ad389ea27a/user");
+
+//         setResponse(res.data);
+//  const lastItem = res._id; // latest object
+//       const resp=  await axios.delete(`https://crudcrud.com/api/0060959d766145b58cbe78ad389ea27a/user/${lastItem._id}`);
+      
+//       console.log(resp)     
+//       // console.log(resp.data)
+//     }
+//     catch (err) {
+//       console.log(err.response?.data || err.message)
+//     }
+
+//   }
+
+//   useEffect(() => {
+
+//  let  call=async( )=>{
+//   await  getMovieData()
+//   // await  Delet()
+// }
+// call()
+//   }, [])
   
-  Send()
-  
-},[])
 
-return (
-<>
-
-</>
-)
+  return (
+    <div>
+      <h1>POST Response</h1>
+      {response && <pre>{JSON.stringify(response, null, 2)}</pre>}
+    </div>
+  );
 }

@@ -22,7 +22,7 @@ catch(err){
 }
 
 }
-console.log(data)
+// console.log(data[0]["#TITLE"])
 
 
 useEffect(()=>{
@@ -40,12 +40,10 @@ return (<>
 data.map((data,i)=>{
 
     return(
-        <>
-        <div key={data.IMDB_ID}>
+        <div key={data[`#TITLE`]+data["#YEAR"]}>
         <h1 >{data["#TITLE"]}</h1>
         <h2 >{data["#ACTORS"]}</h2>
         </div>
-        </>
     )
 
 })
