@@ -1,0 +1,14 @@
+/* .cards{
+
+
+} */
+.cards-head{
+width: 99;
+padding: 100px 0px 05px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    /* align-items: center; */
+
+}
