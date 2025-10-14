@@ -2,6 +2,7 @@ import troli from "../images/Low-code-developer.jpg"
 import "./navbar.css"
 import { Itemsincrease } from "../contexts/itemscontext"
 import { useContext } from "react"
+import {Link} from "react-router-dom"
 
 export default function Navbar() {
 
@@ -35,7 +36,7 @@ console.log(increment)
               <input className="form-control me-2" type="search" placeholder="Search" />
               <button className="btn btn-outline-success text-white border-white" type="submit">Search</button>
             </form>
-        <div className="btn   text-white  ms-2 troli-div" > <span>1</span> <i className="bi bi-cart-fill"></i></div> 
+        <Link className="btn   text-white  ms-2 " to={"/productlist"}  > <span className="troli-span ">{increment.count}</span> <i className="bi bi-cart-fill troli-icon "></i></Link> 
           </div>
         </div>
       </nav>

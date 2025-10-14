@@ -4,19 +4,25 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter, Routes, Route, useParams, NavLink } from 'react-router-dom'
 import { Itemsprovider } from './contexts/itemscontext.jsx'
+import Cart from './components/cartItems.jsx'
 
 const root = createRoot(document.getElementById('root'));
+
+
 root.render(
   <StrictMode>
   < BrowserRouter>
-  {/* <Routes> */}
-
+ 
   <Itemsprovider>
-  <App />
+  
+  <Routes>
+
+    <Route path={`/`} element={<App/>}/>
+    <Route path={`/productlist`} element={<Cart/>}/>
+
+</Routes>
  </Itemsprovider>
-  {/* </Routes> */}
 
   </BrowserRouter>
-
 </StrictMode>
 )
