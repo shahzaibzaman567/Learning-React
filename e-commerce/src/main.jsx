@@ -5,6 +5,8 @@ import App from './App.jsx'
 import { BrowserRouter, Routes, Route, useParams, NavLink } from 'react-router-dom'
 import { Itemsprovider } from './contexts/itemscontext.jsx'
 import Cart from './components/cartItems.jsx'
+import { Quantity } from './contexts/quantity.jsx'
+
 
 const root = createRoot(document.getElementById('root'));
 
@@ -12,7 +14,7 @@ const root = createRoot(document.getElementById('root'));
 root.render(
   <StrictMode>
   < BrowserRouter>
- 
+<Quantity> 
   <Itemsprovider>
   
   <Routes>
@@ -22,7 +24,7 @@ root.render(
 
 </Routes>
  </Itemsprovider>
-
+</Quantity>
   </BrowserRouter>
 </StrictMode>
 )

@@ -10,7 +10,9 @@ function App() {
       <>
 <Navbar/>
 <Card/>
-
+{
+   // console.log(process.env.NAME)
+}
       </>
    )
 
