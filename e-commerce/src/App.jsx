@@ -10,15 +10,15 @@ function App() {
       <>
 <Navbar/>
 <Card/>
-{
-   // console.log(process.env.NAME)
-}
       </>
    )
-
+   
 }
 
 export default App;
 
 
+{/* { */}
+   // console.log(process.env.NAME)
+{/* } */}
 

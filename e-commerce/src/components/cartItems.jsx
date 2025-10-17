@@ -5,19 +5,39 @@ import { useState } from "react";
 function Cart() {
   let storedata =JSON.parse(localStorage.getItem("cartItems")) || [];
   let [data, setData] = useState(storedata || []);
-  console.log(data);
 
-const handlerClick=(index)=>{
-   const updatedData = data.map((item, i) => {
-    if (i === index) {
-      return { ...item, quantity: (item.quantity || 0) + 1 };
-    }
-    return item;
-})
-  setData(updatedData)
-  localStorage.setItem("cartItems",JSON.stringify(updata)) 
+  const handlerClick=(index)=>{
+const updataData=   data.map((item,i)=>{
+      if(i=== index){
+        return {...item, quantity:(item.quantity || 0) +1 }
+      }
+return item;
+    })
 
-} 
+    setData(updataData)
+    localStorage.setItem("cartItems",JSON.stringify(updataData)) 
+  }
+  const HandlerClick=(index)=>{
+const updataData=   data.map((item,i)=>{
+      if(i=== index){
+        return {...item, quantity:(item.quantity || 0) -1 }
+      }
+return item;
+    })
+
+    setData(updataData)
+    localStorage.setItem("cartItems",JSON.stringify(updataData)) 
+  }
+  //practice
+// const handlerClick=(index)=>{
+//    const updatedData = data.map((item, i) => {
+//     if (i === index) {
+//       return { ...item, quantity: (item.quantity || 0) + 1 };
+//     }
+//     return item;
+// })
+
+// } 
   return (
     <>
       <div className="d-flex flex-column">
@@ -55,16 +75,16 @@ const handlerClick=(index)=>{
           {
             data.map((item, i) => {
 
-              return <div className="  head-div " style={{ maxWidth: 1508 }}>
+              return <div className="  head-div " key={i} style={{ maxWidth: 1508 }}>
 
-                <div class="card w-100  mb-3 d-flex flex-row">
+                <div className="card w-100  mb-3 d-flex flex-row">
                   <div className="image ">
                     <img src={`${item.image}`} alt="" className="cart-image" />
                   </div>
                   <div className="w-75 d-flex flex-row align-items-center">
-                  <div class="card-body">
-                    <h3 class="card-title">Ttitle : {item.category}</h3>
-                    <h4 class="card-text">Price : ${item.price}</h4>
+                  <div className="card-body">
+                    <h3 className="card-title">Ttitle : {item.category}</h3>
+                    <h4 className="card-text">Price : ${item.price}</h4>
                         <h4>Quantity : {item.quantity}</h4>
                         {/* <h4>Total-Price : @{item.quantity}</h4> */}
                        </div>
@@ -77,7 +97,9 @@ const handlerClick=(index)=>{
                       role="group"
                       aria-label="Basic mixed styles example"
                     >
-                      <button type="button " className="btn btn-danger btn-group">
+                      <button type="button " className="btn btn-danger btn-group" onClick={()=>{
+                     HandlerClick(i)
+                      }}>
                         -
                       </button>
                       <button type="button " className="btn btn-warning btn-group">
