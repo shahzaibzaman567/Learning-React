@@ -1,0 +1,15 @@
+.banner-div{
+
+    width:auto ;
+    height: 99vh;
+padding:62px 0px;
+padding-left: 15px;
+background-color: yellow;
+}
+.banner{
+    margin-top: 3%;
+    width: 99%;
+    height: 435px;
+    padding-right: -10px;
+    border-radius: 20px;
+}

@@ -7,6 +7,7 @@ import { Increaseitems } from "../contexts/itemscontext"
 import { QuantitY, quantityContext } from "../contexts/quantity";
 import { Itemsincrease } from "../contexts/itemscontext"
 import { useContext } from "react"
+import { Link } from "react-router-dom";
 
 
 function Card() {
@@ -168,7 +169,7 @@ console.log(find )
 
    return (
     <>
-  <nav className="navbar navbar-expand-lg navbar-dark bg-dark position-fixed w-100 cart-navbar">
+  <nav className="navbar navbar-expand-lg navbar-dark bg-dark position-fixed w-100 cart-navbar mt-0">
         <div className="container-fluid">
           <a className="navbar-brand text-white" href="#">MyShop</a>
           <button
@@ -193,7 +194,7 @@ console.log(find )
             <form className="d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" />
               <button className="btn btn-outline-success text-white border-white" type="submit">Search</button>
-                <Link className="btn   text-white  ms-2 " to={"/Cart"}  > <span className="troli-span ">{increments.count}</span> <i className="bi bi-cart-fill troli-icon "></i></Link>
+                <Link className="btn   text-white  ms-2 py-2" to={"/Cart"}  > <span className="troli-span ">{increments.count}</span> <i className="bi bi-cart-fill troli-icon "></i></Link>
             </form>
           </div>
         </div>

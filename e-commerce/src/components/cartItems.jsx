@@ -35,22 +35,12 @@ function Cart() {
   }
 
 //remove the cards
-const handlerRemove=(item,i)=>{
+const handlerRemove=(i)=>{
 
-  let removeData= JSON.parse(localStorage.getItem("cartItems")) || [];
-  let find=removeData.findIndex((data)=>data.category === item.category)
+let newdata=[...data]
 
-  console.log(data)
-  console.log(find)
-
-  if(find !== -1){
-
- removeData=  data.splice(0,find)
-
- console.log(removeData)
- console.log(find)  
- localStorage.setItem("cartItems",JSON.stringify(removeData));
- console.log("hay");
+newdata.splice(i,1)
+setData(newdata);
 
  //to solver remove logic
     // function remove(index) {
@@ -64,10 +54,10 @@ const handlerRemove=(item,i)=>{
     //     setProduct(newproduct);
     //     setTotalAmount(newTotal);
     // }
-  }else{
-    console.log(find)
-    console.log("hay")
-  }
+  // }else{
+  //   console.log(find)
+  //   console.log("hay")
+  // }
 
 }
 
@@ -76,7 +66,9 @@ const handlerRemove=(item,i)=>{
 
   return (
     <>
+    <div className="cart-navbar">
    <Navbar/>
+   </div>
 
         <div className="column-card-head">
 
@@ -87,14 +79,14 @@ const handlerRemove=(item,i)=>{
 
                 <div className="card w-100  mb-3 d-flex flex-row">
                   <div className="image ">
-                    <img src={`${item.image}`} alt="" className="cart-image" />
+                    <img src={`${item?.image}`} alt="" className="cart-image" />
                   </div>
                   <div className="w-75 d-flex flex-row align-items-center">
                     <div className="card-body">
-                      <h3 className="card-title">Ttitle : {item.category}</h3>
-                      <h4 className="card-text">Price : ${item.price}</h4>
-                      <h4>TotalPrice :${item.quantity * item.price}</h4>
-                      <h4>Quantity : {item.quantity}</h4>
+                      <h3 className="card-title">Ttitle : {item?.category}</h3>
+                      <h4 className="card-text">Price : ${item?.price}</h4>
+                      <h4>TotalPrice :${item?.quantity * item?.price}</h4>
+                      <h4>Quantity : {item?.quantity}</h4>
                     </div>
 
                     <div className="">
