@@ -1,3 +1,8 @@
+*{
+    padding: 0%;
+    margin: 0%  ;
+
+}
 .column-card-head{
 padding: 30px;
    width: 99vw;
@@ -16,4 +21,9 @@ padding: 30px;
 .cart-image{
 width: 271px;
 height: 183px;
+}
+.cart-navbar{
+
+    margin-top: -10px;
+
 }

@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css"
 import Card from "./components/cards";
 import Navbar  from "./components/navbar";
+import { Home } from "./components/home";
 
 function App() {
 
@@ -9,7 +10,7 @@ function App() {
    return (
       <>
 <Navbar/>
-<Card/>
+<Home/>
       </>
    )
    
