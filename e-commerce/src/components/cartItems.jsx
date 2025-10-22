@@ -122,22 +122,20 @@ function Cart() {
 
       </div>
       {/* <!-- Footer 1: Simple Total Amount Footer --> */}
-      <footer className="bg-dark text-light py-4 mt-5 shadow-lg w-100 " style={{position:"fixed",top:"79%",bottom:"0%"}}>
-        <div className="container text-center">
-          <div className="row align-items-center">
-            <div className="col-md-6 mb-2 mb-md-0">
-              <h5 className="fw-bold mb-0">🛍️ Smart & Style Store</h5>
-              <small className="text-secondary">© 2025 All Rights Reserved</small>
-            </div>
-            <div className="col-md-6">
-              <div className="d-flex justify-content-center align-items-center gap-2">
-                <h6 className="mb-0">Grand Total :{Total}</h6>
-                <span className="fw-bold text-white fs-5">${ }</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+   <footer className="bg-dark text-light py-4 shadow-lg w-100" style={{position:"fixed", bottom:"0"}}>
+  <div className="container">
+    <div className="row text-center text-md-start align-items-center">
+      <div className="col-12 col-md-6 mb-2 mb-md-0">
+        <h5 className="fw-bold mb-0">🛍️ Smart & Style Store</h5>
+        <small className="text-secondary">© 2025 All Rights Reserved</small>
+      </div>
+      <div className="col-12 col-md-6 d-flex justify-content-center justify-content-md-end">
+        <h6 className="mb-0">Grand Total: $ {Total}</h6>
+      </div>
+    </div>
+  </div>
+</footer>
+
     </>
 
 
