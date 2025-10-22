@@ -1,15 +1,21 @@
 import "./cartitem.css"
-import { useState } from "react";
-import {Link} from "react-router-dom"
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom"
 import Navbar from "./navbar";
 
 
 function Cart() {
   let storedata = JSON.parse(localStorage.getItem("cartItems")) || [];
- 
-  let [data, setData] = useState(storedata || []);
 
+  let [data, setData] = useState(storedata || []);
   
+  let [Total, setTotal] = useState(0);
+
+  useEffect(()=>{
+  let newTotal= data.reduce((acc,curr)=>acc + curr.quantity * curr.price , 0)
+
+  setTotal(Number(newTotal).toFixed(2))
+},[data])
 
   const handlerClick = (index) => {
     const updataData = data.map((item, i) => {
@@ -25,7 +31,7 @@ function Cart() {
   const HandlerClick = (index) => {
     const updataData = data.map((item, i) => {
       if (i === index) {
-        return item.quantity <= 0 ? { ...item, quantity: (0) } : { ...item, quantity: (item.quantity || 0) - 1 }
+        return item.quantity <= 0 ? { ...item, quantity: (0) } : { ...item, quantity: (item?.quantity || 0) - 1 }
       }
       return item;
     })
@@ -34,105 +40,111 @@ function Cart() {
     localStorage.setItem("cartItems", JSON.stringify(updataData))
   }
 
-//remove the cards
-const handlerRemove=(i)=>{
+  //remove the cards
+  const handlerRemove = (i) => {
 
-let newdata=[...data]
+    let newdata = [...data]
 
-newdata.splice(i,1)
-setData(newdata);
+    newdata.splice(i, 1)
+    setData(newdata);
 
- //to solver remove logic
-    // function remove(index) {
 
-    //     let newproduct = [...pro];
-    //     let newTotal = Total;
-
-    //     newTotal -= pro[index].quantity * pro[index].prise;
-
-    //     newproduct.splice(index, 1)
-    //     setProduct(newproduct);
-    //     setTotalAmount(newTotal);
-    // }
-  // }else{
-  //   console.log(find)
-  //   console.log("hay")
-  // }
-
-}
+  }
 
 
 
 
   return (
     <>
-    <div className="cart-navbar">
-   <Navbar/>
-   </div>
+      <div className="cart-navbar" style={{margin:"-10px"}}>
+        <Navbar />
+      </div>
 
-        <div className="column-card-head">
+      <div className=" column-card-head boder-white ">
 
-          {
-            data.map((item, i) => {
+        {
+         data.length > 0? data.map((item, i) => {
+            return <div className="  head-div " key={i} >
 
-              return <div className="  head-div " key={i} style={{ maxWidth: 1508 }}>
+              <div className="card  mb-3 d-flex flex-row flex-wrap  col-11 p-3 justify-content-center" >
 
-                <div className="card w-100  mb-3 d-flex flex-row">
-                  <div className="image ">
-                    <img src={`${item?.image}`} alt="" className="cart-image" />
-                  </div>
-                  <div className="w-75 d-flex flex-row align-items-center">
-                    <div className="card-body">
-                      <h3 className="card-title">Ttitle : {item?.category}</h3>
-                      <h4 className="card-text">Price : ${item?.price}</h4>
-                      <h4>TotalPrice :${item?.quantity * item?.price}</h4>
-                      <h4>Quantity : {item?.quantity}</h4>
-                    </div>
+                <div className="image ">
+                  <img src={`${item?.image}`} alt="" className="cart-image  p-y3 col-xl-5 col-md-5 col-sm-4 col-9" />
+                </div>
+                
+                <div className=" d-flex flex-row align-items-center flex-wrap    ">
 
-                    <div className="">
-                    </div>
+                  <div className="card-body">
+                    <h3 className="card-title">Ttitle : {item?.category}</h3>
+                    <h4 className="card-text">Price : ${item?.price}</h4>
+                    <h4>TotalPrice :${item?.quantity * item?.price}</h4>
+                    <h4>Quantity : {item?.quantity}</h4>
 
-                    <div
-                      className="btn-group "
-                      role="group"
-                      aria-label="Basic mixed styles example"
-                    >
-                      <button type="button " className="btn btn-danger btn-group" onClick={() => {
-                        HandlerClick(i)
-                      }}>
-                        -
-                      </button>
-                      <button type="button " className="btn btn-warning btn-group" onClick={()=>{
-                        handlerRemove(item,i)
-                      }}>
-                        <i className="bi bi-trash-fill text-danger fs-4"></i>
-
-                      </button>
-                      <button type="button " className="btn btn-success btn-group" onClick={() => {
-                        handlerClick(i)
-                      }}>
-                        +
-                      </button>
-                    </div>
                   </div>
 
+                  <div className="">
+                  </div>
 
+                  <div
+                    className="btn-group "
+                    role="group"
+                    aria-label="Basic mixed styles example"
+                  >
+                    <button type="button " className="btn btn-danger btn-group" onClick={() => {
+                      HandlerClick(i)
+                    }}>
+                      -
+                    </button>
+                    <button type="button " className="btn btn-warning btn-group" onClick={() => {
+                      handlerRemove(item, i)
+                    }}>
+                      <i className="bi bi-trash-fill text-danger fs-4"></i>
+
+                    </button>
+                    <button type="button " className="btn btn-success btn-group" onClick={() => {
+                      handlerClick(i)
+                    }}>
+                      +
+                    </button>
+                  </div>
                 </div>
 
 
               </div>
 
 
-            })
-          }
+            </div>
 
+
+          })
+          :<h1  style={{paddingTop:"20%"}}>No cards!</h1>
+        }
+
+      </div>
+      {/* <!-- Footer 1: Simple Total Amount Footer --> */}
+      <footer className="bg-dark text-light py-4 mt-5 shadow-lg w-100 " style={{position:"fixed",top:"79%",bottom:"0%"}}>
+        <div className="container text-center">
+          <div className="row align-items-center">
+            <div className="col-md-6 mb-2 mb-md-0">
+              <h5 className="fw-bold mb-0">🛍️ Smart & Style Store</h5>
+              <small className="text-secondary">© 2025 All Rights Reserved</small>
+            </div>
+            <div className="col-md-6">
+              <div className="d-flex justify-content-center align-items-center gap-2">
+                <h6 className="mb-0">Grand Total :{Total}</h6>
+                <span className="fw-bold text-white fs-5">${ }</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </footer>
     </>
 
 
-  )
+)
 }
 
 export default Cart;
 
+//shahfahad//o3449762513
 

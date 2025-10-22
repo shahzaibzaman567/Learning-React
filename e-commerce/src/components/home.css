@@ -1,15 +1,21 @@
+
 .banner-div{
 
-    width:auto ;
+    width:99vw ;
     height: 99vh;
 padding:62px 0px;
-padding-left: 15px;
-background-color: yellow;
+padding-left: 0px;
+display: flex;
+flex-direction: column;
+gap: 88px;
 }
 .banner{
-    margin-top: 3%;
-    width: 99%;
-    height: 435px;
+    margin-top: -1%;
+    width: 100%;
+    height: auto;
     padding-right: -10px;
-    border-radius: 20px;
+    border-radius: 8px;
+}
+.carousel{
+  padding: 0%;
 }

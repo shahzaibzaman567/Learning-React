@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter, Routes, Route, useParams, NavLink } from 'react-router-dom'
 import { Itemsprovider } from './contexts/itemscontext.jsx'
-import Cart from './components/cartItems.jsx'
+import Cart from "./components/cartItems.jsx"
 import { Quantity } from './contexts/quantity.jsx'
 import Card from './components/cards.jsx'
 import { Home } from './components/home.jsx'
