@@ -1,15 +1,22 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { useAppDispatch } from './component/hooks/hook'
+import { useAppSelector } from './component/hooks/hook'
+import { increment,decrement } from './component/slices/counter'
+import { Check } from './component/checkredux'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const count=useAppSelector(state => state.counter)
+const dispatch=useAppDispatch()
 
   return (
     <>
    <div>
-    <h1 style={{textAlign:"center"}}>hay world</h1>
+    <h1 style={{textAlign:"center"}}>hay Redux count = {count}</h1>
+    <button onClick={()=>dispatch(increment())}>Increment</button>
+    <button onClick={()=>dispatch(decrement())}>decrement</button>
+    <Check/>
    </div>
     </>
   )
