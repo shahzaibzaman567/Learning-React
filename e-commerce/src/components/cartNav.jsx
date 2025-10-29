@@ -1,29 +1,32 @@
 import { Link } from "react-router-dom"
-import { Itemsincrease } from "../contexts/itemscontext"
-import { useContext, useState } from "react"
-
+// import { Itemsincrease } from "../contexts/itemscontext";
+// using redux
+// import { useContext, useState } from "react"
+import { useSelector } from "react-redux";
 export function Cartnav(props) {
+  
+  //  let increment
+  let count = useSelector(state => state.counter );
+  
+  // let [state, setState] = useState({
+  //   category: "",
+  // });
+  // let data = props.data;
 
-  let [state, setState] = useState({
-    category: "",
-  });
-  let data = props.data;
+  // const OnSubmit = () => {
 
-  const OnSubmit = () => {
+  //   data.map((item, i) => {
+  //     let Dslice = item.category.slice(0, 1);
+  //     let Sslice = state.category.slice(0, 1);
 
-    data.map((item, i) => {
-      let Dslice = item.category.slice(0, 1);
-      let Sslice = state.category.slice(0, 1);
+  //     if (Dslice === Sslice) {
 
-      if (Dslice === Sslice) {
-
-        console.log(Sslice)
-      }
-    })
-  }
+  //       console.log(Sslice)
+  //     }
+  //   })
+  // }
 
 
-  let increments = useContext(Itemsincrease)
 
   return <nav className="navbar navbar-expand-lg navbar-dark bg-dark position-fixed w-100 cart-navbar mt-0">
     <div className="container-fluid">
@@ -56,12 +59,13 @@ export function Cartnav(props) {
            placeholder="Search" 
            name="category"
            required
-          value={state.category}
-          onChange={(e)=>{
-            setState({...state , name:e.target.value })
-          }}  />
+          // value={state.category}
+          // onChange={(e)=>{
+          //   setState({...state , name:e.target.value })
+          // }} 
+           />
           <button className="btn btn-outline-success text-white border-white" type="submit">Search</button>
-          <Link className="btn   text-white  ms-2 py-2" to={"/Cart"}  > <span className="troli-span ">{increments.count}</span> <i className="bi bi-cart-fill troli-icon "></i></Link>
+          <Link className="btn   text-white  ms-2 py-2" to={"/Cart"}  > <span className="troli-span ">{count}</span> <i className="bi bi-cart-fill troli-icon "></i></Link>
         </form>
       </div>
     </div>

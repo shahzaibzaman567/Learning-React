@@ -1,98 +1,100 @@
 import React, { useEffect, useState } from "react";
-import iphone from "../images/Low-code-and-fast-build.png";
+// import iphone from "../images/Low-code-and-fast-build.png";
 import ipad from "../images/Low-code-developer.jpg";
 import axios from 'axios';
 import "./card.css";
-import { Increaseitems } from "../contexts/itemscontext"
-import { QuantitY, quantityContext } from "../contexts/quantity";
+// import  Increaseitems from "../contexts/itemscontext.jsx"
 import { Cartnav } from "./cartNav";
-
+import { useDispatch } from "react-redux";
+import { increment } from "../contexts/slice";
 
 function Card() {
 
-  let [loding, isLoding] = useState(false)
-  let quantity = QuantitY()
-  let objQuantity = quantity.quantity
+  let [loding, setLoding] = useState(false)
+  // let quantity = QuantitY()
+
   let [cart, setCart] = useState([]);
 
-
+  // let increment = Increaseitems();  //increment count//
+  let dispatch = useDispatch();
+  
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cart))
   }, [cart])
 
-  console.log(objQuantity)
 
-  
+
+
   let [data, setData] = useState(
     [
       // ----------------------use for not wifi if wifi not working use this--------------------------------------//
       {
-        prise: 22,
-        category: "electirc",
+        price: 22,
+        category: "house",
         price: 2421,
         image: ipad,
         quantity: 0,
       },
       {
-        prise: 22,
-        category: "electirc",
-        price: 2421,
+        price: 32,
+        category: "banner",
+        price: 30,
         image: ipad,
         quantity: 0,
       }
       ,
       {
-        prise: 22,
+        price: 22,
         category: "electirc",
         price: 2421,
         image: ipad,
         quantity: 0,
       },
       {
-        prise: 22,
+        price: 22,
         category: "electirc",
         price: 2421,
         image: ipad,
         quantity: 0,
       },
       {
-        prise: 22,
+        price: 22,
         category: "electirc",
         price: 244421,
         image: ipad,
         quantity: 0,
       },
       {
-        prise: 22,
+        price: 22,
         category: "electirc",
         price: 2421,
         image: ipad,
         quantity: 0,
       },
       {
-        prise: 22,
+        price: 22,
         category: "electirc",
         price: 2421,
         image: ipad,
         quantity: 0,
       },
       {
-        prise: 22,
+        price: 22,
         category: "electirc",
         price: 2421,
         image: ipad,
         quantity: 0,
       },
       {
-        prise: 22,
+        price: 22,
         category: "alamonyam",
         price: 2,
         image: ipad,
         quantity: 0,
       },
       {
-        prise: 22,
+        price: 22,
         category: "electirc",
         price: 22,
         image: ipad,
@@ -100,66 +102,69 @@ function Card() {
       }
     ]
   );
-  
 
 
-  let increment = Increaseitems();
-  
-  useEffect(()=>{
-    
+
+
+  useEffect(() => {
+
     async function products() {
       try {
-        isLoding(true)
+        setLoding(true)
+       
         let response = await axios?.get('https://fakestoreapi.com/products');
-      let res = response?.data.map((item) => ({
-        ...item,
-        objQuantity: 0,
+        let res = response?.data.map((item) => ({
+          ...item,
+          objQuantity: 0,
+        }
+        )
+        )
+        setLoding(false)
+        setData(res)
+        console.log(res)
+        console.log(response.data)
+
       }
-      )
-    )
-      isLoding(false)
-      setData(res)
-      console.log(res)
-      console.log(response.data)
-
-    }
-    catch (err) {
-      isLoding(false)
-      console.log(err.response)
+      catch (err) {
       
+        setLoding(false)
+        console.log(err.response)
+
+      }
+
+
     }
-    
-    
-  }
-  products()
-  // export const Esasa=useState(data) ;
+    products()
+    // export const Esasa=useState(data) ;
 
-},[])
+  }, [])
 
-//this is the search bar of nav bar 
+  //this is the search bar of nav bar 
 
   const handlerClick = (index) => {
+
     let selectedData = data[index];
 
-    console.log(selectedData)
     let newCart = [...cart]
 
-    let findTitle = newCart.findIndex((item) => item.category === selectedData.category);
-    let findPrice = newCart.find((item) => item.price === selectedData.price);
+    let findTitle = newCart.findIndex((item) => item.category === selectedData.category && item.price === selectedData.price );
 
     if (!selectedData) {
-      return;
-    }
-    if (find !== -1 && findPrice) {
-      console.log(find)
 
-      newCart[find] = {
-        ...newCart[find],
-        quantity: (newCart[find]?.quantity || 0) + 1
+      return;
+
+    }
+    if (findTitle !== -1 ) {
+
+      console.log(findTitle)
+
+      newCart[findTitle] = {
+        ...newCart[findTitle],
+        quantity: (newCart[findTitle]?.quantity || 0) + 1
       }
     }
     else {
-      console.log(find)
+      console.log(findTitle)
       newCart.push(
         {
           category: selectedData.category,
@@ -210,47 +215,47 @@ function Card() {
   }
   else {
     if (data.length <= 0) {
-      
-      return(<>
+
+      return (<>
         <Cartnav data={data} />
-      <div style={{height:"100vh",paddingTop:"10%"}}>
-      
-      <h1 className="text-danger">!Net work error please try again </h1>
-      </div>
+        <div style={{ height: "100vh", paddingTop: "10%" }}>
+
+          <h1 className="text-danger">!Net work error please try again </h1>
+        </div>
       </>)
     }
 
     else {
       return (
         <>
-        <Cartnav  data={data}/>
-        <div className="cards-head">
-          {
-           data.map((item, i) => {
+          <Cartnav data={data} />
+          <div className="cards-head">
+            {
+              data.map((item, i) => {
 
 
-              return <div className="card m-2  " style={{ width: "300px" }} key={i} >
-                <img src={item.image} className="card-img-top" alt="Product" height={220} />
+                return <div className="card m-2  " style={{ width: "300px" }} key={i} >
+                  <img src={item.image} className="card-img-top" alt="Product" height={220} />
 
-                <div className={`card-body data-index="${i}"`}>
-                  <h5 className="card-title">Title{item.category}</h5>
-                  <h5 className="card-card-prise">Price: ${item.price}</h5>
-                  <div className="d-flex ">
-                    <button className={` btn btn-dark w-100 `} onClick={(e) => {
-                      increment.setCount(increment.count + 1)
-                      handlerClick(i)
-                    }
-                    }>Buy Now</button>
+                  <div className={`card-body data-index="${i}"`}>
+                    <h5 className="card-title">Title{item.category}</h5>
+                    <h5 className="card-card-price">Price: ${item.price}</h5>
+                    <div className="d-flex ">
+                      <button className={` btn btn-dark w-100 `} onClick={(e) => {
+                        dispatch(increment())
+                        handlerClick(i)
+                      }
+                      }>Buy Now</button>
 
+                    </div>
                   </div>
                 </div>
-              </div>
 
-            })
-          }
+              })
+            }
 
-        </div>
-</>
+          </div>
+        </>
       )
     }
   }
