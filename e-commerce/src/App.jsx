@@ -6,7 +6,6 @@ import { Home } from "./components/home";
 
 function App() {
 
-   console.log("say hak")
    return (
       <>
 <Navbar/>

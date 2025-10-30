@@ -1,31 +1,40 @@
 import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { addItem } from "../contexts/sliceData.jsx";
 // import { Itemsincrease } from "../contexts/itemscontext";
 // using redux
 // import { useContext, useState } from "react"
-import { useSelector } from "react-redux";
-export function Cartnav(props) {
-  
-  //  let increment
-  let count = useSelector(state => state.counter );
-  
-  // let [state, setState] = useState({
-  //   category: "",
-  // });
-  // let data = props.data;
+export function Cartnav({ data }) {
 
-  // const OnSubmit = () => {
 
-  //   data.map((item, i) => {
-  //     let Dslice = item.category.slice(0, 1);
-  //     let Sslice = state.category.slice(0, 1);
+  let count = useSelector(state => state.counter);
+  let dispatch = useDispatch();
 
-  //     if (Dslice === Sslice) {
+  let [state, setState] = useState({
+    category: "",
+  });
 
-  //       console.log(Sslice)
-  //     }
-  //   })
-  // }
+  const Handlesubmit = () => {
 
+    let search = [];
+
+    const filterData = data.filter((item, i) => {
+
+      let Dslice = item.category.slice(0, 1).toLowerCase().trim(); //dataSlice
+      let Sslice = state.category.slice(0, 1).toLowerCase().trim();//StateSlice
+
+      if (Dslice === Sslice) {
+        console.log(Sslice)
+        console.log(item.category)
+        console.log(Sslice)
+        search.push({ category: item.category, price: item.price,image:item.image })
+      }
+    })
+    
+    dispatch(addItem(search))
+  }
 
 
   return <nav className="navbar navbar-expand-lg navbar-dark bg-dark position-fixed w-100 cart-navbar mt-0">
@@ -50,20 +59,20 @@ export function Cartnav(props) {
           <li className="nav-item text-white"><Link className="nav-link" to={"/About"}>About</Link></li>
           <li className="nav-item text-white"><Link className="nav-link" to={"/contact"}>Contact</Link></li>
         </ul>
-        <form className="d-flex" role="search" onSubmit={() => {
-// OnSubmit()
+        <form className="d-flex" role="search" onSubmit={(e) => {
+          e.preventDefault()
+          return Handlesubmit()
         }} >
           <input
-           className="form-control me-2 "
-           type="search" 
-           placeholder="Search" 
-           name="category"
-           required
-          // value={state.category}
-          // onChange={(e)=>{
-          //   setState({...state , name:e.target.value })
-          // }} 
-           />
+            className="form-control me-2 "
+            type="search"
+            placeholder="Search"
+            name="category"
+            value={state.category}
+            onChange={(e) => {
+              setState({ ...state, category: e.target.value })
+            }}
+          />
           <button className="btn btn-outline-success text-white border-white" type="submit">Search</button>
           <Link className="btn   text-white  ms-2 py-2" to={"/Cart"}  > <span className="troli-span ">{count}</span> <i className="bi bi-cart-fill troli-icon "></i></Link>
         </form>

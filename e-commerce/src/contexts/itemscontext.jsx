@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit"
 import counterReducer from "../contexts/slice.jsx"
+import filterReducer from "../contexts/sliceData.jsx"
 
 export const  Increaseitems = configureStore({
 
     reducer:{
 
        counter:counterReducer,
+       filter:filterReducer,
     },
 })
 
