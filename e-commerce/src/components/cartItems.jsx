@@ -66,13 +66,12 @@ function Cart() {
          data.length > 0? data.map((item, i) => {
             return <div className="  head-div " key={i} >
 
-              <div className="card  mb-3 d-flex flex-row flex-wrap  col-11 p-3 justify-content-center" >
+              <div className="card h-25 mb-3 d-flex flex-row flex-wrap  col-11 p-3 justify-content-center" >
 
                 <div className="image ">
                   <img src={`${item?.image}`} alt="" className="cart-image  p-y3 col-xl-5 col-md-5 col-sm-4 col-9" />
                 </div>
                 
-                <div className=" d-flex flex-row align-items-center flex-wrap    ">
 
                   <div className="card-body">
                     <h3 className="card-title">Ttitle : {item?.category}</h3>
@@ -84,7 +83,7 @@ function Cart() {
 
                   <div className="">
                   </div>
-
+<div className="head-btn d-flex align-items-center" style={{height:"auto"}}>
                   <div
                     className="btn-group "
                     role="group"
@@ -108,12 +107,11 @@ function Cart() {
                     </button>
                   </div>
                 </div>
-
+</div>
 
               </div>
 
 
-            </div>
 
 
           })

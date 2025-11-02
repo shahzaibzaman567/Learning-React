@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
 import "./signup.css"
-import { Link } from "react-router-dom"
+import { Link,useNavigate } from "react-router-dom"
+
 
 export function Signup() {
 
-    let [localdata, setlocalData] = useState([]);
-    localStorage.setItem("users", JSON.stringify(localdata))
+    let [localdata, setlocalData] = useState(JSON.parse(localStorage.getItem("users")) || []);
+    let navigate=useNavigate();      
 
     let [Err, setErr] = useState(false);
 
@@ -16,10 +17,10 @@ export function Signup() {
 
     })
     function User(name, email, password) {
-
+        
         let localUser = JSON.parse(localStorage.getItem("users")) || []
-
-        let founder = localUser.find((user) => user.email === state.email && user.password === state.password)
+        
+        let founder = localUser.find((user) => user.email === state.email)
 
         if (founder) {
             console.log("email ya password same ha")
@@ -34,10 +35,10 @@ export function Signup() {
             email: email,
             password: password,
         })
-
+        
         setErr(false)
         setlocalData(user)
-
+        navigate("/signin")
 
     }
     useEffect(() => {
@@ -49,11 +50,10 @@ export function Signup() {
     return (
         <>
             <div className="login-head">
-                <div className="container  col-xl-4 col-md-7 col-sm-10 col-12 d-flex justify-content-center align-items-center flex-column ">
+                <div className="container   col-xl-3 col-md-5 col-sm-6 col-9  d-flex justify-content-center align-items-center flex-column ">
 
                     <form className="card w-100 p-4 d-flex flex-column gap-2 " onSubmit={(e) => {
                         e.preventDefault()
-
                         User(state.name, state.email, state.password)
 
                     }}>
@@ -66,6 +66,7 @@ export function Signup() {
                                     }`}
                                 id="Name"
                                 name="name"
+                                required
                                 value={state.name}
                                 onChange={(e) => {
                                     setstate({ ...state, name: e.target.value })
@@ -78,12 +79,13 @@ export function Signup() {
                             <label htmlFor="email" className="label">Email address</label>
                             <input
                                 type="email"
-                                className={`form-control ${Err ? "is-invalid" : ""
+                                className={`form-control ${Err ? " is-invalid" : ""
                                     }`}
                                 id="email"
                                 name="email"
                                 aria-describedby="emailHelp"
                                 value={state.email}
+                                required
                                 onChange={(e) => {
                                     setstate({ ...state, email: e.target.value })
                                 }}
@@ -94,11 +96,11 @@ export function Signup() {
                             <label htmlFor="password" className="orm-label">Password</label>
                             <input
                                 type="password"
-                                className={`form-control ${Err ? "is-invalid" : ""
-                                    }`}
+                                className={`form-control `}
                                 id="password"
                                 name="da"
                                 value={state.password}
+                                required
                                 onChange={(e) => {
                                     setstate({ ...state, password: e.target.value })
                                 }}
