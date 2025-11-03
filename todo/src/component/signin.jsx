@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { login } from "./context/contectlogin";
+import {LoginContext} from "./context/contextlogin.jsx"
 
 export function Signin() {
 
     let navigate = useNavigate();
-    let login = login ;
+    let login = LoginContext() ;
     console.log(login)
     let [Err, setErr] = useState(false);
 
@@ -23,7 +23,10 @@ export function Signin() {
 
         console.log(findE, findP)
         if (findP && findE) {
-
+            
+            login.setLogin(true)
+            login.setName(findE.name)
+            
             navigate("/home")
 
         } else {
