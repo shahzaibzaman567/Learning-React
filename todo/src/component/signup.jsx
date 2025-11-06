@@ -52,14 +52,14 @@ export function Signup() {
             <div className="login-head">
                 <div className="container   col-xl-3 col-md-5 col-sm-6 col-9  d-flex justify-content-center align-items-center flex-column ">
 
-                    <form className="card w-100 p-4 d-flex flex-column gap-2 " onSubmit={(e) => {
+                    <form className="card w-100 p-4 d-flex flex-column gap-2 "  style={{borderColor:" linear-gradient(135deg, #a8edea 0%, #0066ff 100%"}} onSubmit={(e) => {
                         e.preventDefault()
                         User(state.name, state.email, state.password)
 
                     }}>
-                        <h2 className="pb-3 text-center">Signup</h2>
+                        <h2 className="pb-3 text-center text-white">Signup</h2>
                         <div className="mb-1">
-                            <label htmlFor="Name" className="form-label">Name</label>
+                            <label htmlFor="Name" className="form-label text-white">Name</label>
                             <input
                                 type="text"
                                 className={`form-control ${Err.email ? "is-invalid" : ""
@@ -76,7 +76,7 @@ export function Signup() {
 
                         <div className="mb-1">
 
-                            <label htmlFor="email" className="label">Email address</label>
+                            <label htmlFor="email" className="label text-white">Email address</label>
                             <input
                                 type="email"
                                 className={`form-control ${Err ? " is-invalid" : ""
@@ -93,7 +93,7 @@ export function Signup() {
                         </div>
 
                         <div className="mb-1">
-                            <label htmlFor="password" className="orm-label">Password</label>
+                            <label htmlFor="password" className="orm-label text-white">Password</label>
                             <input
                                 type="password"
                                 className={`form-control `}
@@ -107,8 +107,8 @@ export function Signup() {
                             />
                         </div>
 
-                        <button type="submit" className="btn btn-primary    w-100">register</button>
-                        <Link to="/signin"><button className="btn btn-primary bg-primary  mt-2 w-100">signin</button></Link>
+                        <button type="submit" className="btn btn-primary  w-100 registration">register</button>
+                        <Link to="/signin"><button className="btn btn-primary bg-primary  mt-2 w-100 login  ">signin</button></Link>
 
                     </form>
                 </div>

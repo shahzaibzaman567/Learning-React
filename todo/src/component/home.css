@@ -1,5 +1,60 @@
 .home-div{
 padding-top: 58px;
-    width: 100vw;
+    width: 96%;
     height: 99vh;
+}
+.form-control{
+
+      border: linear-gradient(135deg, #a8edea 0%, #0066ff 100%);
+
+}
+#button-addon2{
+     background: linear-gradient(135deg, #a8edea 0%, #0066ff 100%);
+
+
+}
+#button-addon2:hover{
+  background: linear-gradient(135deg, #a8edea 0%, #0066ff 100%);
+
+    color: white;
+}
+.card{
+     background: linear-gradient(135deg, #a8edea 0%, #0066ff 100%);
+    max-width: auto;
+    min-height: 5%;
+    overflow-y: auto;
+}
+
+.sidbar{
+height: 92vh;
+border: 2px solid rgb(46, 179, 240);
+border-radius: 2%;
+width: 22%;
+overflow-y: auto;
+}
+.User_Name_div1{
+
+    /* text-align: center;
+    background-color: blue;
+    color: white;
+    border-radius: 50%;     */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+     background: linear-gradient(135deg, #a8edea 0%, #0066ff 100%);
+     width: 58%;
+    
+  }
+ 
+.User_Name_h1{
+  font-size: 150px;
+  text-align: center;
+  color: white;
+}
+.head_name_div{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

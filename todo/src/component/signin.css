@@ -1,0 +1,15 @@
+.heading,.pasword{
+
+    color:#080683
+}
+
+.login, .registration{
+
+    background:linear-gradient(135deg, #18a39c83 0%, #0c397e 100%);
+    border: 1px solid rgb(47, 153, 206)  ;
+}
+.login-form{
+
+    border-color: #080683;
+    
+}
