@@ -25,7 +25,7 @@ export function Navbar(){
 
         <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
           <button
-            className="btn text-white border-white" id="button-addon2" 
+            className="btn text-white border-white " id="button-addon2" 
           >
             Logout
           </button>

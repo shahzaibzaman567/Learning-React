@@ -31,6 +31,7 @@ border: 2px solid rgb(46, 179, 240);
 border-radius: 2%;
 width: 22%;
 overflow-y: auto;
+margin-left: -4px;
 }
 .User_Name_div1{
 
@@ -41,6 +42,7 @@ overflow-y: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1%;
     border-radius: 50%;
      background: linear-gradient(135deg, #a8edea 0%, #0066ff 100%);
      width: 58%;
@@ -57,4 +59,13 @@ overflow-y: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+abbr[title] {
+  text-decoration: none !important;
+  border-bottom: none !important;
 }

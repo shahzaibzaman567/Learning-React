@@ -2,10 +2,12 @@ import { useEffect, useState } from "react"
 import { LoginContext } from "./context/contextlogin"
 import "./home.css"
 import { Navbar } from "./nabvbar.jsx";
+import { Link } from "react-router-dom";
 
 export function Home() {
 
   let user = LoginContext().name;
+
   // come error solve the error 
 
   let slice = user ? user.slice(0, 1) : "U";
@@ -15,12 +17,12 @@ export function Home() {
   let [state, setState] = useState({
     id: 1,
     isEditing: false,
-    text: "",
+    text: " ",
     completed: false,
     user: user
 
   });
-
+console.log(state.text)
   useEffect(() => {
     let load = JSON.parse(sessionStorage.getItem("todo")) || [];
     setTodo(load);
@@ -29,12 +31,12 @@ export function Home() {
   function handlerSubmit() {
 
     let oldTodo = JSON.parse(sessionStorage.getItem("todo")) || [];
-
+    
     oldTodo.push(state);
     sessionStorage.setItem("todo", JSON.stringify(oldTodo));
     setTodo(oldTodo);
+    setState({ ...state, text: "say",id : state.id + 1 });
     setCreating(true);
-    setState({ ...state, text: "", id: state.id + 1 });
   }
 
   function handlerRemove(i) {
@@ -52,6 +54,7 @@ export function Home() {
     let Complete = JSON.parse(sessionStorage.getItem("todo"));
     Complete[i].completed = true
     sessionStorage.setItem("todo", JSON.stringify(Complete));
+    setTodo([...Complete]); //  ✅UI update
   }
 
   function handlerEdit(i) {
@@ -59,8 +62,26 @@ export function Home() {
     let Editing = JSON.parse(sessionStorage.getItem("todo"));
     Editing[i].isEditing = true;
     sessionStorage.setItem("todo", JSON.stringify(Editing));
+    setTodo([...Editing]);  // ✅ UI update
   }
 
+  function handlerKeyDown(e,id) {
+
+    if (e.key === "Enter") {
+
+      let updateTodo = todo.map((todo)=>{
+
+     if(todo.id == id){
+
+       return {...todo, text:e.target.value,isEditing:false }
+      }
+      return todo
+    })
+      
+    sessionStorage.setItem("todo", JSON.stringify(updateTodo));
+    setTodo(updateTodo)
+    }
+  }
 
   return (
     <>
@@ -68,12 +89,28 @@ export function Home() {
 
       <div className="home-div d-flex justify-content-between pe-4 ">
 
-        <div className="sidbar px-3">
+        <div className="column sidbar px-3 d-flex flex-column   ">
 
           <div className="head_name_div">
-          <div className="User_Name_div1">
-            <h1 className="User_Name_h1">{slice}</h1>
+            <div className="User_Name_div1">{
+              slice === "U" ?
+
+                <abbr title="User"><h1 className="User_Name_h1">{slice}</h1></abbr>
+
+                :
+                <abbr title={LoginContext().name}><h1 className="User_Name_h1">{slice.toUpperCase()}</h1></abbr>
+
+            }
+            </div>
           </div>
+
+          <div className="d-flex flex-column justify-content-center align-items-center mt-5 ">
+            <Link><h3><i class="bi bi-clock-history" ></i> History</h3></Link>
+            <hr  class="border border-2 border-dark w-100" />
+            <Link><h3><i class="bi bi-check-circle-fill"></i>Completed </h3></Link>
+            <hr  class="border border-2 border-dark w-100" />
+            <Link><h3 ><i class="bi bi-trash"></i>Deleted</h3></Link>
+            <hr  class="border border-2 border-dark w-100" />
           </div>
         </div>
 
@@ -98,14 +135,15 @@ export function Home() {
               />
               <button className="todo-btn" type="submit" id="button-addon2" >Add</button>
             </div>
+
           </form>
           {
-            creating === true && todo.length > 0 ?
+             todo.length > 0 ?
 
               todo.map((item, i) => {
 
 
-                return <div className="container mt-4" key={i}>
+                return <div className="container mt-4 " key={i}>
                   <div className="row justify-content-center">
                     <div className="col-md-12 col-xl-12">
 
@@ -113,30 +151,44 @@ export function Home() {
                         className="d-flex align-items-center justify-content-between p-3 mb-3 border rounded shadow"
                         style={{ background: "#7b8fc7ff", borderLeft: "6px solid #4f46f4ff" }}
                       >
-                        <div>
-                          <h6 className="m-0" style={{ color: "#3347deff;" }}>Task ID: #{item.id}</h6>
+                        {
+                          item.isEditing ?
+                            <>  <h6 className={`m-0 ${item.completed ? "disabled" : ""} `} style={{ color: "#3347deff" }}>Task ID: #{item.id}</h6>
 
-                          {/* <!-- Long text → ellipsis only --> */}
-                          <p className="m-0"
-                            style={{ maxWidth: "250px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                            {item.text}
-                          </p>
-                        </div>
+                              <input
+                                type="text"
+                                className="form-control  w-50"
+                                defaultValue={item.text}
+                                onKeyDown={(e) => { handlerKeyDown(e,item.id) }}
+                              />
+                            </>
+                            :
+                            <div>
+                              <h6 className={`m-0 ${item.completed ? "disabled" : ""} `} style={{ color: "#3347deff" }}>Task ID: #{item.id}</h6>
+
+                              {/* <!-- Long text → ellipsis only --> */}
+                              <p className="m-0"
+                                style={{ maxWidth: "250px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                                {item.text}
+                              </p>
+                            </div>
+
+                        }
 
                         <div className="d-flex gap-2">
 
                           {/* <!-- Edit --> */}
-                          <button className="btn btn-sm btn-primary" onClick={() => { handlerEdit(i) }}>
+                          <button className={`btn btn-sm btn-primary ${item.completed ? "disabled" : ""}`} onClick={() => { handlerEdit(i) }}>
                             <i className="bi bi-pencil-square"></i>
                           </button>
 
                           {/* <!-- Delete --> */}
-                          <button className="btn btn-sm btn-danger" onClick={() => { handlerRemove(i) }}>
+                          <button className={`btn btn-sm btn-danger ${item.completed ? "disabled" : ""}`} onClick={() => { handlerRemove(i) }}>
                             <i className="bi bi-trash"></i>
                           </button>
 
                           {/* <!-- Complete --> */}
-                          <button className="btn btn-sm btn-success" onClick={() => { handlerComplete(i) }}>
+                          <button className={`btn btn-sm btn-success ${item.completed ? "disabled" : ""}`} onClick={() => { handlerComplete(i) }}>
                             <i className="bi bi-check2-circle"></i>
                           </button>
 
@@ -152,10 +204,12 @@ export function Home() {
 
 
               : <h5 className="mt-3 text-center">No Todos📘  Yet</h5>
+
           }
         </div>
 
       </div>
     </>
+
   )
 } 
