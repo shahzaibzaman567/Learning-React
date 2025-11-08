@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { LoginContext } from "./context/contextlogin"
 import "./home.css"
 import { Navbar } from "./nabvbar.jsx";
-import { Link } from "react-router-dom";
 
 export function Home() {
 
@@ -85,34 +84,9 @@ console.log(state.text)
 
   return (
     <>
+
       <Navbar />
-
-      <div className="home-div d-flex justify-content-between pe-4 ">
-
-        <div className="column sidbar px-3 d-flex flex-column   ">
-
-          <div className="head_name_div">
-            <div className="User_Name_div1">{
-              slice === "U" ?
-
-                <abbr title="User"><h1 className="User_Name_h1">{slice}</h1></abbr>
-
-                :
-                <abbr title={LoginContext().name}><h1 className="User_Name_h1">{slice.toUpperCase()}</h1></abbr>
-
-            }
-            </div>
-          </div>
-
-          <div className="d-flex flex-column justify-content-center align-items-center mt-5 ">
-            <Link><h3><i class="bi bi-clock-history" ></i> History</h3></Link>
-            <hr  class="border border-2 border-dark w-100" />
-            <Link><h3><i class="bi bi-check-circle-fill"></i>Completed </h3></Link>
-            <hr  class="border border-2 border-dark w-100" />
-            <Link><h3 ><i class="bi bi-trash"></i>Deleted</h3></Link>
-            <hr  class="border border-2 border-dark w-100" />
-          </div>
-        </div>
+      <div className="home-div d-flex justify-content-center   ">
 
         <div className="card w-50 mt-3  p-3" style={{ height: "auto" }}>
           <form className=" pt-2 d-flex " onSubmit={(e) => {
@@ -183,7 +157,7 @@ console.log(state.text)
                           </button>
 
                           {/* <!-- Delete --> */}
-                          <button className={`btn btn-sm btn-danger ${item.completed ? "disabled" : ""}`} onClick={() => { handlerRemove(i) }}>
+                          <button className={`btn btn-sm btn-danger`} onClick={() => { handlerRemove(i) }}>
                             <i className="bi bi-trash"></i>
                           </button>
 
