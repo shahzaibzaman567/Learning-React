@@ -1,7 +1,7 @@
 .home-div{
 padding-top: 58px;
     width: 100%;
-    height: 99vh;
+    height: 86vh;
 }
 .form-control{
 
@@ -33,33 +33,7 @@ width: 22%;
 overflow-y: auto;
 margin-left: -4px;
 }
-.User_Name_div1{
 
-    /* text-align: center;
-    background-color: blue;
-    color: white;
-    border-radius: 50%;     */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1%;
-    border-radius: 50%;
-     background: linear-gradient(135deg, #a8edea 0%, #0066ff 100%);
-     width: 58%;
-    
-  }
- 
-.User_Name_h1{
-  font-size: 150px;
-  text-align: center;
-  color: white;
-}
-.head_name_div{
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 ul, li {
   list-style: none;
   padding: 0;

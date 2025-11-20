@@ -9,8 +9,6 @@ export function Home() {
 
   // come error solve the error 
 
-  let slice = user ? user.slice(0, 1) : "U";
-  let [creating, setCreating] = useState(false);
 
   let [todo, setTodo] = useState([]);
   let [state, setState] = useState({
@@ -88,7 +86,7 @@ console.log(state.text)
       <Navbar />
       <div className="home-div d-flex justify-content-center   ">
 
-        <div className="card w-50 mt-3  p-3" style={{ height: "auto" }}>
+        <div className="card col-lg-6 col-md-8 col-sm-10 col-11  ms-lg-5  p-3 " style={{ height: "auto" }}>
           <form className=" pt-2 d-flex " onSubmit={(e) => {
             e.preventDefault();
             handlerSubmit();

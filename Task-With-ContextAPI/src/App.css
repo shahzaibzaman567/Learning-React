@@ -1,0 +1,73 @@
+*{
+margin: 0px;
+padding: 0px;
+box-sizing: border-box;
+font-family: Fantasy;
+}
+.Head-Container{
+background: #3cff00;
+background: linear-gradient(90deg, rgba(60, 255, 0, 1) 0%, rgba(70, 203, 4, 1) 26%, rgba(242, 37, 10, 1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+height: 100vh;
+width: 100vw;
+}
+
+.Count-Me{
+color:white ;
+}
+.Inner-h1{
+    color: rgb(238, 233, 233);
+    text-shadow: -3px -16px 14px;;
+}
+
+.count-container{
+border:2px solid  #d13913;
+border-radius: 10px ;
+width:46% ;
+height:46% ;
+display: flex;
+justify-content: space-around;
+flex-direction: column;
+align-items: center;
+}
+
+.btn-head{
+    display: flex;
+}
+
+.Danger,.Green{
+    border-radius: 90px;
+    padding: 6px 31px
+         
+
+}
+
+.Danger{
+    
+    background-color: rgba(252, 31, 31, 0.904);
+    color: beige;
+    margin-right: 4px;
+    border-color: rgba(243, 39, 39, 0.815);
+}
+
+.Green{
+    
+    background-color: rgb(62, 192, 2);
+    color: beige;
+    margin-left: 4px;
+    border-color: rgb(62, 192, 2);
+
+}
+
+.Danger:hover{
+
+        box-shadow: 0px -2px 45px rgb(250, 121, 121);
+
+}
+.Green:hover{
+
+        box-shadow: 0px -2px 14px rgb(14, 247, 6);
+}
